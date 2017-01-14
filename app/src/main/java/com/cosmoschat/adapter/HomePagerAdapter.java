@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.cosmoschat.fragment.ChatListFragment;
+
 
 public class HomePagerAdapter extends FragmentStatePagerAdapter {
 	private static final String[] mTitles = new String[]{"CHATS", "CONTACTS"};
@@ -14,12 +16,12 @@ public class HomePagerAdapter extends FragmentStatePagerAdapter {
 
 	@Override
 	public Fragment getItem(int position) {
-		return null;
+		return new ChatListFragment();
 	}
 
 	@Override
 	public int getCount() {
-		return 2;
+		return 1;
 	}
 
 	@Override

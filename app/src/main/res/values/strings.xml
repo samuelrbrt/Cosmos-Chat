@@ -11,4 +11,6 @@
 
     <string name="invalid_email">Invalid Gmail Address</string>
     <string name="invalid_password">at least 8 characters</string>
+    <string name="tool_time">6:52 PM</string>
+    <string name="tool_message">Thanks for the advice</string>
 </resources>
