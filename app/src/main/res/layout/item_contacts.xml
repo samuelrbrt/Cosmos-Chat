@@ -20,7 +20,6 @@
         android:layout_marginStart="@dimen/text_margin"
         android:layout_marginTop="@dimen/thick"
         android:layout_toEndOf="@id/civ_avatar"
-        android:layout_toStartOf="@+id/tv_time"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="?attr/textAppearanceListItem"
@@ -29,17 +28,7 @@
         tools:text="@string/app_name"/>
 
     <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:textColor="@color/grey"
-        android:textSize="12sp"
-        tools:text="@string/tool_time"/>
-
-    <TextView
-        android:id="@+id/tv_recent"
+        android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_name"

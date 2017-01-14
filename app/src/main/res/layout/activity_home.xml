@@ -35,6 +35,11 @@
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/pts_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:scrollIndicators="bottom"
+            android:scrollbarSize="2dp"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="horizontal"/>
     </android.support.v4.view.ViewPager>
 </android.support.design.widget.CoordinatorLayout>

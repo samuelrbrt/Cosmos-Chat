@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:text="@string/new_user"
-        app:switchPadding="@dimen/narrow_margin"/>
+        app:switchPadding="@dimen/narrow"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_email"

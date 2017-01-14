@@ -18,8 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ChatListFragment extends Fragment
-    implements ValueEventListener, ChatListAdapter.OnChatListItemClickLister {
+public class ChatListFragment extends Fragment implements ValueEventListener, ChatListAdapter.OnChatListItemClickLister {
 	private RecyclerView mChatListRV;
 	private ChatListAdapter mAdapter;
 
@@ -35,9 +34,8 @@ public class ChatListFragment extends Fragment
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	                         Bundle savedInstanceState) {
-		mChatListRV = (RecyclerView) inflater.inflate(R.layout.fragment_chat_list, container, false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		mChatListRV = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
 		mChatListRV.setLayoutManager(new LinearLayoutManager(getContext()));
 		mAdapter = new ChatListAdapter(this);
 		mChatListRV.setAdapter(mAdapter);
