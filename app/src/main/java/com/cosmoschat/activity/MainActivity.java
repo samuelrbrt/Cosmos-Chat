@@ -8,7 +8,6 @@ import com.cosmoschat.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-	private static final String TAG = "MainActivity";
 	private static final int RC_AUTH = 0;
 
 	@Override
@@ -19,14 +18,16 @@ public class MainActivity extends AppCompatActivity {
 		if (FirebaseAuth.getInstance().getCurrentUser() == null) {
 			startActivityForResult(new Intent(this, AuthActivity.class), RC_AUTH);
 		} else {
-			//TODO: launch message list activity
+			startActivity(new Intent(this, HomeActivity.class));
+			finish();
 		}
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {
-			////TODO: launch message list activity
+			startActivity(new Intent(this, HomeActivity.class));
+			finish();
 		} else {
 			finish();
 		}
