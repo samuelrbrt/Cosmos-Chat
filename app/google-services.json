@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "117004461975",
-    "firebase_url": "https://cosmoschat-6bb91.firebaseio.com",
-    "project_id": "cosmoschat-6bb91",
-    "storage_bucket": "cosmoschat-6bb91.appspot.com"
+    "project_number": "687851943691",
+    "firebase_url": "https://cosmos-chat-d1953.firebaseio.com",
+    "project_id": "cosmos-chat-d1953",
+    "storage_bucket": "cosmos-chat-d1953.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:117004461975:android:590e71e88b08e928",
+        "mobilesdk_app_id": "1:687851943691:android:590e71e88b08e928",
         "android_client_info": {
           "package_name": "com.cosmoschat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "117004461975-ij2qk73ujv7v32nldqu9hov5c64bfu45.apps.googleusercontent.com",
+          "client_id": "687851943691-eehm4hqck7oqk08p6e0chgeah8tpvcif.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.cosmoschat",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "117004461975-s7c2jjotbo6kekrnsajvcba9s60b2mqm.apps.googleusercontent.com",
+          "client_id": "687851943691-7e5lsk22vvcqrmgghtijk6keio49pcji.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXvQmih_ZymKIQcNp6mSh39jLUuQxMhsA"
+          "current_key": "AIzaSyB1rP_bMuIx_qYIrc7WdyiXxX-b0iIdXdI"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "117004461975-s7c2jjotbo6kekrnsajvcba9s60b2mqm.apps.googleusercontent.com",
+              "client_id": "687851943691-7e5lsk22vvcqrmgghtijk6keio49pcji.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
