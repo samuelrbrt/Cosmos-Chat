@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "117004461975",
+    "firebase_url": "https://cosmoschat-6bb91.firebaseio.com",
+    "project_id": "cosmoschat-6bb91",
+    "storage_bucket": "cosmoschat-6bb91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117004461975:android:590e71e88b08e928",
+        "android_client_info": {
+          "package_name": "com.cosmoschat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117004461975-ij2qk73ujv7v32nldqu9hov5c64bfu45.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cosmoschat",
+            "certificate_hash": "0949FA36187B99CA416B0CD91C59E05D147ED831"
+          }
+        },
+        {
+          "client_id": "117004461975-s7c2jjotbo6kekrnsajvcba9s60b2mqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXvQmih_ZymKIQcNp6mSh39jLUuQxMhsA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117004461975-s7c2jjotbo6kekrnsajvcba9s60b2mqm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
