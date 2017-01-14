@@ -1,49 +1,22 @@
 package com.cosmoschat.model;
 
 
-public class BaseChatModel {
-	private String avatarURL, name, time, recent;
+import android.net.Uri;
 
-	public BaseChatModel() {
+public class BaseChatModel extends UserModel {
+	private final String time, recent;
 
-	}
-
-	public BaseChatModel(String avatarURL, String name, String time, String recent) {
-		this.avatarURL = avatarURL;
-		this.name = name;
+	public BaseChatModel(Uri avatarURL, String name, String time, String recent, String userId) {
+		super(name, avatarURL, userId);
 		this.time = time;
 		this.recent = recent;
-	}
-
-	public String getAvatarURL() {
-		return avatarURL;
-	}
-
-	public void setAvatarURL(String avatarURL) {
-		this.avatarURL = avatarURL;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getTime() {
 		return time;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
-	}
-
 	public String getRecent() {
 		return recent;
-	}
-
-	public void setRecent(String recent) {
-		this.recent = recent;
 	}
 }

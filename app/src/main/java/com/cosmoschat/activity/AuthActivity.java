@@ -8,17 +8,21 @@ import android.widget.Toast;
 
 import com.cosmoschat.R;
 import com.cosmoschat.fragment.AuthFragment;
+import com.cosmoschat.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AuthActivity extends AppCompatActivity
     implements FirebaseAuth.AuthStateListener, AuthFragment.OnAuthListener {
 	private static final String TAG = "AuthActivity";
 
 	private FirebaseAuth mAuth;
+	private DatabaseReference mContactsRef;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class AuthActivity extends AppCompatActivity
 		setContentView(R.layout.activity_auth);
 
 		mAuth = FirebaseAuth.getInstance();
+		mContactsRef = FirebaseDatabase.getInstance().getReference().child("users");
 	}
 
 	@Override
@@ -64,9 +69,13 @@ public class AuthActivity extends AppCompatActivity
 		    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 			    @Override
 			    public void onComplete(@NonNull Task<AuthResult> task) {
-				    if (!task.isSuccessful()) {
-					    Toast.makeText(AuthActivity.this, "Authentication failed.",
-						Toast.LENGTH_SHORT).show();
+				    if (task.isSuccessful()) {
+					    // Add user information into the contacts node
+					    FirebaseUser user = task.getResult().getUser();
+					    UserModel model = new UserModel(user.getDisplayName(), user.getPhotoUrl(), user.getUid());
+					    mContactsRef.push().setValue(model, user);
+				    } else {
+					    Toast.makeText(AuthActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
 				    }
 			    }
 		    });

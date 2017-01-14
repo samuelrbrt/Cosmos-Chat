@@ -1,6 +1,5 @@
 package com.cosmoschat.adapter;
 
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.TextView;
 
 import com.cosmoschat.R;
 import com.cosmoschat.model.BaseChatModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,17 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
+		BaseChatModel model = models.get(position);
 
+		Picasso.with(holder.avatarCIV.getContext())
+		    .load(model.getAvatarURL())
+		    .resize(64, 64)
+		    .centerCrop()
+		    .into(holder.avatarCIV);
+
+		holder.nameTV.setText(model.getName());
+		holder.timeTV.setText(model.getTime());
+		holder.recentTV.setText(model.getRecent());
 	}
 
 	@Override

@@ -5,14 +5,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.cosmoschat.R;
 import com.cosmoschat.model.ContactModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapter.ViewHolder> {
 	private ArrayList<ContactModel> models = new ArrayList<>();
+	private OnContactListItemClickLister mListener;
+
+	public ContactsListAdapter(OnContactListItemClickLister listener) {
+		this.mListener = listener;
+	}
 
 	public void addNewContact(ContactModel model) {
 		models.add(model);
@@ -27,17 +36,50 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
 
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
+		ContactModel model = models.get(position);
 
+		Picasso.with(holder.avatarCIV.getContext())
+		    .load(model.getAvatarURL())
+		    .resize(64, 64)
+		    .centerCrop()
+		    .into(holder.avatarCIV);
+
+		holder.nameTV.setText(model.getName());
+		holder.statusTV.setText(model.getStatus());
 	}
 
 	@Override
 	public int getItemCount() {
-		return 0;
+		return models.size();
 	}
 
-	class ViewHolder extends RecyclerView.ViewHolder {
+	public interface OnContactListItemClickLister {
+		void onAvatar(int position);
+		void onItem(int position);
+	}
+
+	class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+		CircleImageView avatarCIV;
+		TextView nameTV, statusTV;
+
 		ViewHolder(View itemView) {
 			super(itemView);
+
+			avatarCIV = (CircleImageView) itemView.findViewById(R.id.civ_avatar);
+			nameTV = (TextView) itemView.findViewById(R.id.tv_name);
+			statusTV = (TextView) itemView.findViewById(R.id.tv_status);
+
+			itemView.setOnClickListener(this);
+			avatarCIV.setOnClickListener(this);
+		}
+
+		@Override
+		public void onClick(View v) {
+			if (v.getId() == R.id.civ_avatar) {
+				mListener.onAvatar(getAdapterPosition());
+			} else {
+				mListener.onItem(getAdapterPosition());
+			}
 		}
 	}
 }

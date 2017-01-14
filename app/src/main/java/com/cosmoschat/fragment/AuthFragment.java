@@ -34,8 +34,7 @@ public class AuthFragment extends Fragment implements View.OnClickListener, Comp
 		if (context instanceof OnAuthListener) {
 			mListener = (OnAuthListener) context;
 		} else {
-			throw new RuntimeException(context.toString()
-			                               + " must implement OnAuthListener");
+			throw new RuntimeException(context.toString() + " must implement OnAuthListener");
 		}
 	}
 

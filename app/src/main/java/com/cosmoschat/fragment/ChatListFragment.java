@@ -19,23 +19,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ChatListFragment extends Fragment implements ValueEventListener, ChatListAdapter.OnChatListItemClickLister {
-	private RecyclerView mChatListRV;
 	private ChatListAdapter mAdapter;
-
-	private DatabaseReference mRootRef;
 	private DatabaseReference childRef;
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		mRootRef = FirebaseDatabase.getInstance().getReference();
-		childRef = mRootRef.child("chat_list");
+		childRef = FirebaseDatabase.getInstance().getReference().child("chat_list");
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mChatListRV = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
+		RecyclerView mChatListRV = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
 		mChatListRV.setLayoutManager(new LinearLayoutManager(getContext()));
 		mAdapter = new ChatListAdapter(this);
 		mChatListRV.setAdapter(mAdapter);
@@ -52,7 +47,10 @@ public class ChatListFragment extends Fragment implements ValueEventListener, Ch
 	@Override
 	public void onDataChange(DataSnapshot dataSnapshot) {
 		BaseChatModel model = dataSnapshot.getValue(BaseChatModel.class);
-		mAdapter.addNewModel(model);
+
+		if (model != null) {
+			mAdapter.addNewModel(model);
+		}
 	}
 
 	@Override
