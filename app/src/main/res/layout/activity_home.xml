@@ -24,22 +24,18 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
         </android.support.v7.widget.Toolbar>
+
+        <com.cosmoschat.view.SlidingTabLayout
+            android:id="@+id/st_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:paddingBottom="1dp"/>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <android.support.v4.view.PagerTabStrip
-            android:id="@+id/pts_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:scrollIndicators="bottom"
-            android:scrollbarSize="2dp"
-            android:scrollbarStyle="insideOverlay"
-            android:scrollbars="horizontal"/>
-    </android.support.v4.view.ViewPager>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </android.support.design.widget.CoordinatorLayout>
