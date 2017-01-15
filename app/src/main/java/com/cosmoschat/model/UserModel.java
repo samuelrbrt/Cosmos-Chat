@@ -1,29 +1,40 @@
 package com.cosmoschat.model;
 
+public class UserModel {
+	private String avatar;
+	private String name, status;
 
-import android.net.Uri;
+	public UserModel() {
 
-import java.io.Serializable;
+	}
 
-public class UserModel implements Serializable {
-	private final Uri avatarURL;
-	private final String name, userId;
-
-	public UserModel(String name, Uri avatarURL, String userId) {
+	public UserModel(String name, String avatar, String status) {
 		this.name = name;
-		this.avatarURL = avatarURL;
-		this.userId = userId;
+		this.avatar = avatar;
+		this.status = status;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Uri getAvatarURL() {
-		return avatarURL;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

@@ -34,7 +34,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 		BaseChatModel model = models.get(position);
 
 		Picasso.with(holder.avatarCIV.getContext())
-		    .load(model.getAvatarURL())
+		    .load(model.getAvatar())
 		    .resize(64, 64)
 		    .centerCrop()
 		    .into(holder.avatarCIV);
@@ -52,11 +52,6 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 	public void addNewModel(BaseChatModel model) {
 		models.add(model);
 		notifyItemInserted(models.size() - 1);
-	}
-
-	public interface OnChatListItemClickLister {
-		void onAvatar(int position);
-		void onItem(int position);
 	}
 
 	class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -83,5 +78,10 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 				mListener.onItem(getAdapterPosition());
 			}
 		}
+	}
+
+	public interface OnChatListItemClickLister {
+		void onAvatar(int position);
+		void onItem(int position);
 	}
 }

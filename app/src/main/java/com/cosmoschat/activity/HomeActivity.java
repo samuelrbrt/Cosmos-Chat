@@ -9,9 +9,15 @@ import android.support.v7.widget.Toolbar;
 import com.cosmoschat.R;
 import com.cosmoschat.adapter.HomePagerAdapter;
 import com.cosmoschat.view.SlidingTabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 @SuppressWarnings("ConstantConditions")
 public class HomeActivity extends AppCompatActivity {
+	private static final String TAG = "HomeActivity";
+
+	private FirebaseAuth mAuth;
+	private DatabaseReference mRootRef, mUsersRef;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

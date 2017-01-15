@@ -7,7 +7,7 @@ public class ContactModel extends UserModel {
 	private final String status;
 
 	public ContactModel(Uri avatarURL, String name, String status, String userId) {
-		super(name, avatarURL, userId);
+		super(name, avatarURL.toString(), userId);
 
 		this.status = status;
 	}

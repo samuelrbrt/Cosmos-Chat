@@ -7,7 +7,7 @@ public class BaseChatModel extends UserModel {
 	private final String time, recent;
 
 	public BaseChatModel(Uri avatarURL, String name, String time, String recent, String userId) {
-		super(name, avatarURL, userId);
+		super(name, avatarURL.toString(), userId);
 		this.time = time;
 		this.recent = recent;
 	}
