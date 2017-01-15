@@ -15,22 +15,22 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapter.ViewHolder> {
+public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
 	private ArrayList<UserModel> models = new ArrayList<>();
 	private OnContactListItemClickLister mListener;
 
-	public ContactsListAdapter(OnContactListItemClickLister listener) {
+	public UserListAdapter(OnContactListItemClickLister listener) {
 		this.mListener = listener;
 	}
 
-	public void addNewContact(UserModel model) {
+	public void addNewUser(UserModel model) {
 		models.add(model);
 		notifyItemInserted(models.size() - 1);
 	}
 
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contacts, parent, false);
+		View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_users, parent, false);
 		return new ViewHolder(itemView);
 	}
 

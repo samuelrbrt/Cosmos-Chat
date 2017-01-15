@@ -5,19 +5,14 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.cosmoschat.R;
 import com.cosmoschat.adapter.HomePagerAdapter;
 import com.cosmoschat.view.SlidingTabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 
 @SuppressWarnings("ConstantConditions")
 public class HomeActivity extends AppCompatActivity {
-	private static final String TAG = "HomeActivity";
-
-	private FirebaseAuth mAuth;
-	private DatabaseReference mRootRef, mUsersRef;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +20,17 @@ public class HomeActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_home);
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 		setSupportActionBar(toolbar);
-		getSupportActionBar().setTitle(R.string.app_name);
-		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 
 		ViewPager homeVP = (ViewPager) findViewById(R.id.vp_home);
 		homeVP.setAdapter(new HomePagerAdapter(getSupportFragmentManager()));
