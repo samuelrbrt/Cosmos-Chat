@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.cosmoschat.R;
@@ -39,5 +41,16 @@ public class HomeActivity extends AppCompatActivity {
 		slidingTabLayout.setCustomTabView(R.layout.sliding_tab, R.id.tv_title);
 		slidingTabLayout.setViewPager(homeVP);
 		slidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_home, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return super.onOptionsItemSelected(item);
 	}
 }

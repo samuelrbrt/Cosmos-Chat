@@ -3,6 +3,7 @@ package com.cosmoschat.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,35 +21,42 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UsersFragment extends Fragment implements UserListAdapter.OnContactListItemClickLister, ChildEventListener {
+public class UsersFragment extends Fragment implements UserListAdapter.OnUserItemClickLister, ChildEventListener {
 	private static final String TAG = "UsersFragment";
+
 	private UserListAdapter mAdapter;
-	private DatabaseReference usersRef;
+	private DatabaseReference mUsersRef;
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		usersRef = FirebaseDatabase.getInstance().getReference().child(FirebaseRef.USERS);
+		mUsersRef = FirebaseDatabase.getInstance().getReference().child(FirebaseRef.USERS);
 	}
 
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		RecyclerView contactsRV = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
-		contactsRV.setLayoutManager(new LinearLayoutManager(getContext()));
+		RecyclerView usersRV = (RecyclerView) inflater.inflate(R.layout.fragment_list, container, false);
+
+		LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+		usersRV.setLayoutManager(layoutManager);
+
+		DividerItemDecoration decoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
+		usersRV.addItemDecoration(decoration);
+
 		mAdapter = new UserListAdapter(this);
-		contactsRV.setAdapter(mAdapter);
+		usersRV.setAdapter(mAdapter);
 
-		usersRef.addChildEventListener(this);
+		mUsersRef.addChildEventListener(this);
 
-		return contactsRV;
+		return usersRV;
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
 
-		usersRef.removeEventListener(this);
+		mUsersRef.removeEventListener(this);
 	}
 
 	@Override
@@ -79,12 +87,12 @@ public class UsersFragment extends Fragment implements UserListAdapter.OnContact
 	}
 
 	@Override
-	public void onAvatar(int position) {
+	public void onAvatar(UserModel model, int position) {
 
 	}
 
 	@Override
-	public void onItem(int position) {
+	public void onItem(UserModel model, int position) {
 
 	}
 }

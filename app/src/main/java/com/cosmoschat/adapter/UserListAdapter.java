@@ -17,9 +17,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
 	private ArrayList<UserModel> models = new ArrayList<>();
-	private OnContactListItemClickLister mListener;
+	private OnUserItemClickLister mListener;
 
-	public UserListAdapter(OnContactListItemClickLister listener) {
+	public UserListAdapter(OnUserItemClickLister listener) {
 		this.mListener = listener;
 	}
 
@@ -71,15 +71,15 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 		@Override
 		public void onClick(View v) {
 			if (v.getId() == R.id.civ_avatar) {
-				mListener.onAvatar(getAdapterPosition());
+				mListener.onAvatar(models.get(getAdapterPosition()), getAdapterPosition());
 			} else {
-				mListener.onItem(getAdapterPosition());
+				mListener.onItem(models.get(getAdapterPosition()), getAdapterPosition());
 			}
 		}
 	}
 
-	public interface OnContactListItemClickLister {
-		void onAvatar(int position);
-		void onItem(int position);
+	public interface OnUserItemClickLister {
+		void onAvatar(UserModel model, int position);
+		void onItem(UserModel model, int position);
 	}
 }
