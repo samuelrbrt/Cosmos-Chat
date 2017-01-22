@@ -1,5 +1,6 @@
 package com.cosmoschat.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,20 +13,33 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cosmoschat.R;
-import com.cosmoschat.adapter.UserListAdapter;
+import com.cosmoschat.adapter.ContactsAdapter;
 import com.cosmoschat.database.FirebaseRef;
-import com.cosmoschat.model.UserModel;
+import com.cosmoschat.model.ContactModel;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UsersFragment extends Fragment implements UserListAdapter.OnUserItemClickLister, ChildEventListener {
-	private static final String TAG = "UsersFragment";
+public class ContactsFragment extends Fragment implements ContactsAdapter.OnContactsItemClickLister, ChildEventListener {
+	private static final String TAG = "ContactsFragment";
 
-	private UserListAdapter mAdapter;
+	private ContactsAdapter mAdapter;
 	private DatabaseReference mUsersRef;
+	private OnContactListener mListener;
+
+	@Override
+	public void onAttach(Context context) {
+		super.onAttach(context);
+
+		try {
+			mListener = (OnContactListener) context;
+		} catch (ClassCastException e) {
+			throw new IllegalStateException(getActivity().getLocalClassName() + " must implement UserListener " +
+			    "interface.");
+		}
+	}
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +58,7 @@ public class UsersFragment extends Fragment implements UserListAdapter.OnUserIte
 		DividerItemDecoration decoration = new DividerItemDecoration(getContext(), layoutManager.getOrientation());
 		usersRV.addItemDecoration(decoration);
 
-		mAdapter = new UserListAdapter(this);
+		mAdapter = new ContactsAdapter(this);
 		usersRV.setAdapter(mAdapter);
 
 		mUsersRef.addChildEventListener(this);
@@ -53,16 +67,17 @@ public class UsersFragment extends Fragment implements UserListAdapter.OnUserIte
 	}
 
 	@Override
-	public void onDestroy() {
-		super.onDestroy();
+	public void onDetach() {
+		super.onDetach();
 
+		mListener = null;
 		mUsersRef.removeEventListener(this);
 	}
 
 	@Override
 	public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 		Log.e(TAG, "onDataChange: New snapshot");
-		UserModel model = dataSnapshot.getValue(UserModel.class);
+		ContactModel model = dataSnapshot.getValue(ContactModel.class);
 		mAdapter.addNewUser(model);
 	}
 
@@ -83,16 +98,20 @@ public class UsersFragment extends Fragment implements UserListAdapter.OnUserIte
 
 	@Override
 	public void onCancelled(DatabaseError databaseError) {
-		Log.e(TAG, databaseError.getMessage());
+		Log.e(TAG, databaseError.getMessage(), databaseError.toException());
 	}
 
 	@Override
-	public void onAvatar(UserModel model, int position) {
+	public void onAvatar(ContactModel model, int position) {
 
 	}
 
 	@Override
-	public void onItem(UserModel model, int position) {
+	public void onItem(ContactModel model, int position) {
+		mListener.onContact(model);
+	}
 
+	public interface OnContactListener {
+		void onContact(ContactModel model);
 	}
 }

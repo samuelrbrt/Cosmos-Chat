@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.cosmoschat.R;
 import com.cosmoschat.database.FirebaseRef;
-import com.cosmoschat.model.UserModel;
+import com.cosmoschat.model.ContactModel;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -56,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == RC_AUTH && resultCode == RESULT_OK) {
 			FirebaseUser user = mAuth.getCurrentUser();
-			UserModel model = new UserModel(user.getDisplayName(), user.getPhotoUrl().toString(), getString(R.string
-			    .default_status));
+			ContactModel model = new ContactModel(
+			    user.getUid(), user.getDisplayName(),
+			    user.getPhotoUrl().toString(), getString(R.string.default_status)
+			);
 
 			mUsersRef.child(user.getUid()).setValue(model)
 			    .addOnCompleteListener(new OnCompleteListener<Void>() {

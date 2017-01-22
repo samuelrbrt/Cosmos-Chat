@@ -1,18 +1,23 @@
 package com.cosmoschat.model;
 
-import android.net.Uri;
-
 public class ContactModel extends UserModel {
+	private String status;
 
-	private final String status;
+	public ContactModel() {
 
-	public ContactModel(Uri avatarURL, String name, String status, String userId) {
-		super(name, avatarURL.toString(), userId);
+	}
+
+	public ContactModel(String uId, String name, String avatarURL, String status) {
+		super(uId, name, avatarURL);
 
 		this.status = status;
 	}
 
 	public String getStatus() {
 		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

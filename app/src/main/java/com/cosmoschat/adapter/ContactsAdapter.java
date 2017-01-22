@@ -8,22 +8,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cosmoschat.R;
-import com.cosmoschat.model.UserModel;
+import com.cosmoschat.model.ContactModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
-	private ArrayList<UserModel> models = new ArrayList<>();
-	private OnUserItemClickLister mListener;
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
+	private ArrayList<ContactModel> models = new ArrayList<>();
+	private OnContactsItemClickLister mListener;
 
-	public UserListAdapter(OnUserItemClickLister listener) {
+	public ContactsAdapter(OnContactsItemClickLister listener) {
 		this.mListener = listener;
 	}
 
-	public void addNewUser(UserModel model) {
+	public void addNewUser(ContactModel model) {
 		models.add(model);
 		notifyItemInserted(models.size() - 1);
 	}
@@ -36,7 +36,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
-		UserModel model = models.get(position);
+		ContactModel model = models.get(position);
 
 		Picasso.with(holder.avatarCIV.getContext())
 		    .load(model.getAvatar())
@@ -78,8 +78,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 		}
 	}
 
-	public interface OnUserItemClickLister {
-		void onAvatar(UserModel model, int position);
-		void onItem(UserModel model, int position);
+	public interface OnContactsItemClickLister {
+		void onAvatar(ContactModel model, int position);
+		void onItem(ContactModel model, int position);
 	}
 }

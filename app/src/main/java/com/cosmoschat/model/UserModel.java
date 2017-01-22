@@ -1,17 +1,17 @@
 package com.cosmoschat.model;
 
-public class UserModel {
-	private String avatar;
-	private String name, status;
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
+	private String uId, name, avatar;
 
 	public UserModel() {
-
 	}
 
-	public UserModel(String name, String avatar, String status) {
+	public UserModel(String uId, String name, String avatar) {
+		this.uId = uId;
 		this.name = name;
 		this.avatar = avatar;
-		this.status = status;
 	}
 
 	public String getName() {
@@ -30,11 +30,11 @@ public class UserModel {
 		this.avatar = avatar;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getUId() {
+		return uId;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setUId(String uId) {
+		this.uId = uId;
 	}
 }

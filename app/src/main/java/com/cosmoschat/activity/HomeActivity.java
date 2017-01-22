@@ -1,5 +1,6 @@
 package com.cosmoschat.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -11,10 +12,12 @@ import android.view.View;
 
 import com.cosmoschat.R;
 import com.cosmoschat.adapter.HomePagerAdapter;
+import com.cosmoschat.fragment.ContactsFragment;
+import com.cosmoschat.model.ContactModel;
 import com.cosmoschat.view.SlidingTabLayout;
 
 @SuppressWarnings("ConstantConditions")
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ContactsFragment.OnContactListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,5 +55,12 @@ public class HomeActivity extends AppCompatActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onContact(ContactModel model) {
+		Intent intent = new Intent(this, ChatActivity.class);
+		intent.putExtra(Intent.EXTRA_UID, model.getUId());
+		startActivity(intent);
 	}
 }
