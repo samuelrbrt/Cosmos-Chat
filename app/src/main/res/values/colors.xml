@@ -2,10 +2,15 @@
 <resources>
     <color name="colorPrimary">#3C5A99</color>
     <color name="colorPrimaryDark">#1C3A79</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#5C7AB9</color>
 
-    <color name="grey">#777</color>
+    <color name="grey">#777777</color>
     <color name="transparentGrey">#88FFFFFF</color>
     <color name="iron">#AAAAAA</color>
     <color name="gray">#999999</color>
+
+    <color name="blue_sky_light">#b3e5fc</color>
+
+    <color name="background_from">@android:color/white</color>
+    <color name="background_to">@color/blue_sky_light</color>
 </resources>

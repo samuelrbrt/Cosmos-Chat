@@ -3,13 +3,13 @@ package com.cosmoschat.model;
 import java.io.Serializable;
 
 public class UserModel implements Serializable {
-	private String uId, name, avatar;
+	private String uid, name, avatar;
 
 	public UserModel() {
 	}
 
-	public UserModel(String uId, String name, String avatar) {
-		this.uId = uId;
+	public UserModel(String uid, String name, String avatar) {
+		this.uid = uid;
 		this.name = name;
 		this.avatar = avatar;
 	}
@@ -30,11 +30,11 @@ public class UserModel implements Serializable {
 		this.avatar = avatar;
 	}
 
-	public String getUId() {
-		return uId;
+	public String getUid() {
+		return uid;
 	}
 
-	public void setUId(String uId) {
-		this.uId = uId;
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 }

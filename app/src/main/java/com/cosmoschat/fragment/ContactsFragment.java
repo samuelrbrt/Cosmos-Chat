@@ -36,8 +36,8 @@ public class ContactsFragment extends Fragment implements ContactsAdapter.OnCont
 		try {
 			mListener = (OnContactListener) context;
 		} catch (ClassCastException e) {
-			throw new IllegalStateException(getActivity().getLocalClassName() + " must implement UserListener " +
-			    "interface.");
+			throw new IllegalStateException(getActivity().getLocalClassName() + " must implement " +
+			    "OnContactListener interface.");
 		}
 	}
 
@@ -76,9 +76,11 @@ public class ContactsFragment extends Fragment implements ContactsAdapter.OnCont
 
 	@Override
 	public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-		Log.e(TAG, "onDataChange: New snapshot");
 		ContactModel model = dataSnapshot.getValue(ContactModel.class);
+		model.setUid(dataSnapshot.getKey());
 		mAdapter.addNewUser(model);
+
+		Log.d(TAG, "New USER: userId: " + dataSnapshot.getKey() + ", Name: " + model.getName());
 	}
 
 	@Override

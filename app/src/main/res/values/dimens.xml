@@ -6,4 +6,11 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="thin">4dp</dimen>
     <dimen name="thick">12dp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="margin_xxxl">64dp</dimen>
+    <dimen name="margin_xl">24dp</dimen>
+    <dimen name="margin_l">16dp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
 </resources>

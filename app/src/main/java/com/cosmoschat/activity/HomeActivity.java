@@ -60,7 +60,7 @@ public class HomeActivity extends AppCompatActivity implements ContactsFragment.
 	@Override
 	public void onContact(ContactModel model) {
 		Intent intent = new Intent(this, ChatActivity.class);
-		intent.putExtra(Intent.EXTRA_UID, model.getUId());
+		intent.putExtra(Intent.EXTRA_UID, model);
 		startActivity(intent);
 	}
 }

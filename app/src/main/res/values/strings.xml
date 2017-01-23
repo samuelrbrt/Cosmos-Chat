@@ -6,7 +6,9 @@
     <string name="facebook_login_protocol_scheme"
         translatable="false">fb1217754311627038</string>
 
-    <string name="tool_time">6:52 PM</string>
+    <string name="tools_time">6:52 PM</string>
     <string name="tool_message">Thanks for the advice</string>
     <string name="default_status">Hi there, I\'m using Cosmos Chat</string>
+    <string name="tools_message">Hi, hello, how are you?</string>
+    <string name="hint_message">Type a message</string>
 </resources>
